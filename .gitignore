@@ -253,3 +253,4 @@ paket-files/
 
 # Cms
 src/Cms.Web/Logs/logs.txt
+package-lock.json
