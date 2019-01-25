@@ -1,0 +1,192 @@
+@import (reference) "../../styles/colors.less";
+/*框架*/
+
+@menu-bg: linear-gradient(to left top, @blue-7, @blue-9); //导航条、侧边栏背景颜色
+@text-color :@text-color-dark; //导航条字体颜色
+@text-color-secondary :@text-color-secondary-dark;
+@menu-hoverColor: @blue-5; // 导航条menu hover状态颜色
+@menu-selectedColor: @blue-6; // 导航条menu selected状态时颜色
+body {
+    height: 100%;
+    :global(#root) {
+        height: 100%;
+        :global(.ant-layout) {
+            height: 100%;            
+        }
+        :global(.ant-layout-sider) {
+            background: transparent
+        }
+        :golbal(.ant-layout-header) {
+            background: transparent
+        }        
+        :global(.ant-spin-nested-loading){
+            height: inherit;            
+        }
+        :global(.ant-spin-container){
+                height: inherit;               
+            } 
+    }
+}
+
+.content{
+    padding: 16px;
+    height: inherit;
+}
+/*工具栏*/
+
+.headerBox {
+    height: 64px;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0;
+    top: 0;
+    z-index: 1000;
+    color: @text-color;
+    border-bottom: rgba(255, 255, 255, 0.1) 1px solid;
+    box-sizing: border-box;
+    background: @menu-bg!important;
+}
+
+.headerTools {
+    flex: auto;
+    padding: 0 15px;
+    text-align: right
+}
+
+.noticeIconStyle {
+    span i {
+        color: @text-color-dark;
+    }
+}
+
+.action {
+    cursor: pointer;
+    padding: 0 12px;
+    display: inline-block;
+    transition: all 0.3s;
+    height: 100%;
+    color: @text-color;
+    position: relative;
+    &:hover {
+        background: @menu-hoverColor;
+        color: @text-color;
+    }
+    &:active {
+        background: @menu-selectedColor;
+        color: @text-color;
+    }
+}
+
+.messagesbadge {
+    position: absolute;
+    top: 20%;
+    right: 0;
+}
+
+.userMenu {
+    :global(.anticon) {
+        margin-right: 8px;
+    }
+    :global(.ant-dropdown-menu-item) {
+        width: 160px;
+        height: 40px;
+    }
+}
+
+.account {
+    .avatar {
+        margin: 20px 8px 20px 0;
+        vertical-align: middle;
+    }
+}
+
+/*logo*/
+
+.logo {
+    width: 200px;
+    height: 65px;
+    left: 0;
+    text-align: center;
+    box-sizing: border-box;
+    background-image: url("/images/logo_white.png");
+}
+
+/*折叠图标*/
+
+.trigger {
+    cursor: pointer;
+    width: auto;
+    padding: 0 24px;
+    height: 64px;
+    line-height: 64px;
+    color: @text-color-dark;
+    margin-right: 1px;
+    &:hover {
+        background: @menu-hoverColor;
+    }
+    &:active {
+        background: @menu-selectedColor;
+    }
+}
+
+/*导航菜单*/
+
+.navMenu {
+    display: block;
+    overflow: hidden;
+    :global(.ant-menu) {
+        height: 64px;
+        line-height: 64px;
+        background: transparent;
+        border: none;
+        color: @text-color;
+        :global(.ant-menu-item) {
+            >a {
+                color: @text-color;
+            }
+            border: none;
+            &:hover {
+                background: @menu-hoverColor;
+                color: @text-color;
+            }
+        }
+        :global(.ant-menu-item-selected) {
+            background: @menu-selectedColor;
+            color: @text-color;
+        }
+    }
+}
+
+/*侧边栏菜单*/
+
+.siderMenu {
+    :global(.ant-menu) {
+        height: 100%;
+        background: @menu-bg!important;
+        color: @text-color;
+        :global(.ant-menu-item) {
+            >a {
+                color: @text-color;
+            }
+            &:hover {
+                background: @menu-hoverColor;
+                color: @text-color;
+            }
+            i {
+                width: 28px;
+            }
+        }
+        :global(.ant-menu-item-selected) {
+            background: @menu-selectedColor;
+            color: @text-color;
+        }
+    }
+}
+
+.messageList {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 280px;
+}
