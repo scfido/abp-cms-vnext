@@ -2,34 +2,41 @@
 
 const MAIN_MENU = {
     "result":
-        {
-            "name": "MainMenu",
-            "displayName": "Main menu",
-            "customata": null,
+    {
+        "name": "MainMenu",
+        "displayName": "Main menu",
+        "customata": null,
+        "items": [{
+            "name": "todo",
+            "icon": "list",
+            "displayName": "Todo",
+            "order": 1,
+            "url": "/todo",
+            "customData": null,
+            "target": null,
+            "isEnabled": true,
+            "isVisible": true,
             "items": [{
-                "name": "Todo.Index",
+                "name": "index",
                 "icon": "list",
-                "displayName": "Todo",
+                "displayName": "Todo.Test",
                 "order": 0,
-                "url": "/todo",
+                "url": "/todo/test",
                 "customData": null,
                 "target": null,
                 "isEnabled": true,
                 "isVisible": true,
-                "items": [{
-                    "name": "Todo.Test",
-                    "icon": "list",
-                    "displayName": "Todo.Test",
-                    "order": 0,
-                    "url": "/todo/test",
-                    "customData": null,
-                    "target": null,
-                    "isEnabled": true,
-                    "isVisible": true,
-                    "items": []
-                }]
+                "items": []
             }]
-        },
+        }, {
+            "name": "workflow",
+            "icon": "list",
+            "displayName": "工作流",
+            "order": 0,
+            "url": "/workflow",
+        }
+        ]
+    },
     "targetUrl": null,
     "success": true,
     "error": null,
@@ -39,92 +46,114 @@ const MAIN_MENU = {
 
 const ADMIN_MENU = {
     "result":
-        {
-            "name": "Admin",
-            "displayName": "[Admin]",
+    {
+        "name": "Admin",
+        "displayName": "[Admin]",
+        "customData": null,
+        "items": [{
+            "name": "Admin.System",
+            "icon": "database",
+            "displayName": "[系统管理]",
+            "order": 0,
+            "url": "/admin/system/organization",
             "customData": null,
+            "target": null,
+            "isEnabled": true,
+            "isVisible": true,
             "items": [{
-                "name": "Admin.System",
-                "icon": "database",
-                "displayName": "[系统管理]",
+                "name": "Admin.System.Organization",
+                "icon": "fork",
+                "displayName": "[组织机构]",
                 "order": 0,
                 "url": "/admin/system/organization",
                 "customData": null,
                 "target": null,
                 "isEnabled": true,
                 "isVisible": true,
-                "items": [{
-                    "name": "Admin.System.Organization",
-                    "icon": "fork",
-                    "displayName": "[组织机构]",
-                    "order": 0,
-                    "url": "/admin/system/organization",
-                    "customData": null,
-                    "target": null,
-                    "isEnabled": true,
-                    "isVisible": true,
-                    "items": []
-                }, {
-                    "name": "Admin.System.Department",
-                    "icon": "idcard",
-                    "displayName": "[部门]",
-                    "order": 0,
-                    "url": "/admin/system/department",
-                    "customData": null,
-                    "target": null,
-                    "isEnabled": true,
-                    "isVisible": true,
-                    "items": []
-                }, {
-                    "name": "Admin.System.Roles",
-                    "icon": "team",
-                    "displayName": "[角色]",
-                    "order": 0,
-                    "url": "/admin/system/roles",
-                    "customData": null,
-                    "target": null,
-                    "isEnabled": true,
-                    "isVisible": true,
-                    "items": []
-                }, {
-                    "name": "Admin.System.Users",
-                    "icon": "user",
-                    "displayName": "[用户]",
-                    "order": 0, "url": "/admin/system/person",
-                    "customData": null,
-                    "target": null,
-                    "isEnabled": true,
-                    "isVisible": true,
-                    "items": []
-                }, {
-                    "name": "Admin.System.AuditLogs",
-                    "icon": "safety",
-                    "displayName": "[审计日志]",
-                    "order": 0,
-                    "url": "/admin/system/auditLogs",
-                    "customData": null,
-                    "target": null,
-                    "isEnabled": true,
-                    "isVisible": true,
-                    "items": []
-                }, {
-                    "name": "Admin.System.Tenant",
-                    "icon": "setting",
-                    "displayName": "[设置]",
-                    "order": 0,
-                    "url": "/admin/system/tenantsettings",
-                    "customData": null,
-                    "target": null,
-                    "isEnabled": true,
-                    "isVisible": true,
-                    "items": []
-                }]
+                "items": []
             }, {
-                "name": "Admin.Generator",
-                "icon": "codepen",
-                "displayName": "[代码生成]",
+                "name": "Admin.System.Department",
+                "icon": "idcard",
+                "displayName": "[部门]",
                 "order": 0,
-                "url": "/admin/codegenerator",
+                "url": "/admin/system/department",
+                "customData": null,
+                "target": null,
+                "isEnabled": true,
+                "isVisible": true,
+                "items": []
+            }, {
+                "name": "Admin.System.Roles",
+                "icon": "team",
+                "displayName": "[角色]",
+                "order": 0,
+                "url": "/admin/system/roles",
+                "customData": null,
+                "target": null,
+                "isEnabled": true,
+                "isVisible": true,
+                "items": []
+            }, {
+                "name": "Admin.System.Users",
+                "icon": "user",
+                "displayName": "[用户]",
+                "order": 0, "url": "/admin/system/person",
+                "customData": null,
+                "target": null,
+                "isEnabled": true,
+                "isVisible": true,
+                "items": []
+            }, {
+                "name": "Admin.System.AuditLogs",
+                "icon": "safety",
+                "displayName": "[审计日志]",
+                "order": 0,
+                "url": "/admin/system/auditLogs",
+                "customData": null,
+                "target": null,
+                "isEnabled": true,
+                "isVisible": true,
+                "items": []
+            }, {
+                "name": "Admin.System.Tenant",
+                "icon": "setting",
+                "displayName": "[设置]",
+                "order": 0,
+                "url": "/admin/system/tenantsettings",
+                "customData": null,
+                "target": null,
+                "isEnabled": true,
+                "isVisible": true,
+                "items": []
+            }]
+        }, {
+            "name": "Admin.Generator",
+            "icon": "codepen",
+            "displayName": "[代码生成]",
+            "order": 0,
+            "url": "/admin/codegenerator",
+            "customData": null,
+            "target": null,
+            "isEnabled": true,
+            "isVisible": true,
+            "items": []
+        },
+        {
+            "name": "Admin.Passport",
+            "icon": "desktop",
+            "displayName": "[认证服务]",
+            "order": 0,
+            "url": "/admin/passport/clients",
+            "customData": null,
+            "target": null,
+            "isEnabled": true,
+            "isVisible": true,
+            "items": [{
+                "name": "Admin.Passprot.Clients",
+                "icon": "desktop",
+                "displayName": "[客户端]",
+                "order": 0,
+                "url": "/admin/passport/clients",
                 "customData": null,
                 "target": null,
                 "isEnabled": true,
@@ -132,41 +161,19 @@ const ADMIN_MENU = {
                 "items": []
             },
             {
-                "name": "Admin.Passport",
-                "icon": "desktop",
-                "displayName": "[认证服务]",
+                "name": "Admin.Passprot.Resources",
+                "icon": "wallet",
+                "displayName": "[资源]",
                 "order": 0,
-                "url": "/admin/passport/clients",
+                "url": "/admin/passport/resources",
                 "customData": null,
                 "target": null,
                 "isEnabled": true,
                 "isVisible": true,
-                "items": [{
-                    "name": "Admin.Passprot.Clients",
-                    "icon": "desktop",
-                    "displayName": "[客户端]",
-                    "order": 0,
-                    "url": "/admin/passport/clients",
-                    "customData": null,
-                    "target": null,
-                    "isEnabled": true,
-                    "isVisible": true,
-                    "items": []
-                },
-                {
-                    "name": "Admin.Passprot.Resources",
-                    "icon": "wallet",
-                    "displayName": "[资源]",
-                    "order": 0,
-                    "url": "/admin/passport/resources",
-                    "customData": null,
-                    "target": null,
-                    "isEnabled": true,
-                    "isVisible": true,
-                    "items": []
-                }]
+                "items": []
             }]
-        },
+        }]
+    },
     "targetUrl": null,
     "success": true,
     "error": null,

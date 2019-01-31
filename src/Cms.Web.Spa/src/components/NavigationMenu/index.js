@@ -25,9 +25,9 @@ export default class NavMenu extends PureComponent {
             return null;
 
         return menus.map(menu => {
-            if (!menu.isVisible)
+            if (menu.isVisible === false)
                 return null;
-            if (menu.items.length > 0 && !this.props.topOnly)
+            if (menu.items && menu.items.length > 0 && !this.props.topOnly)
                 return this.createSubMenuItem(menu);
             else
                 return this.createMenuItem(menu);
@@ -49,7 +49,7 @@ export default class NavMenu extends PureComponent {
         }
 
         return (
-            <Menu.Item key={menu.name} disabled={!menu.isEnabled} >
+            <Menu.Item key={menu.name} disabled={menu.isEnabled === false} >
                 {item}
             </Menu.Item>);
     }

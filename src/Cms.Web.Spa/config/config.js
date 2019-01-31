@@ -53,4 +53,8 @@ export default {
   lessLoaderOptions: {
     javascriptEnabled: true,
   },
+  cssLoaderOptions:{
+    camelCase:true,
+  }
+
 };
