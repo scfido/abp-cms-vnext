@@ -51,6 +51,9 @@ export default class DefaultLayout extends PureComponent {
             mainMenu = menus[0];
         else
             mainMenu = menus.find(menu => menu.name == mainName);
+            
+        if (!mainMenu)
+            return [];
 
         if (mainMenu.items)
             return mainMenu.items;

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import { connect } from 'dva';
 import { Row, Col } from 'antd';
 import GGEditor, { Flow, RegisterCommand, withPropsAPI } from 'gg-editor';
 import EditorMinimap from '../../components/WorkFlowEditor/EditorMinimap';
@@ -6,25 +7,33 @@ import FlowContextMenu from '../../components/WorkFlowEditor/FlowContextMenu';
 import FlowToolbar from '../../components/WorkFlowEditor/FlowToolbar';
 import FlowItemPanel from '../../components/WorkFlowEditor/FlowItemPanel';
 import FlowDetailPanel from '../../components/WorkFlowEditor/FlowDetailPanel';
-import NodeProperty from '../../components/WorkFlowEditor/NodeProperty';
+import NodeEditor from '../../components/WorkFlowEditor/NodeEditor';
 
 import styles from './index.less';
+import { func } from 'prop-types';
 
 class FlowPage extends React.Component {
 
-  state = { propertyDailogVisible: false }
-
   componentDidMount() {
-    this.propsAPI = this.props.propsAPI;
   }
 
-  renderFlow() {
-    return (<Flow className={styles.flow} onNodeDoubleClick={this.handlNodeDoubleClick} />)
+  renderFlow=()=> {
+
+    return (<Flow className={styles.flow} onNodeDoubleClick={this.handlNodeDoubleClick.bind(this)} />)
   }
 
   handlNodeDoubleClick = (node) => {
-    console.log(node);
-    this.setState({ propertyDailogVisible : true })
+    // const { propsAPI } = this.props;
+    // let nodes = propsAPI.getSelected();
+    const { label, id } = node.item.model;
+
+    this.props.dispatch({
+      type: 'workflow/showEditor',
+      payload: {
+        visible: true,
+        node: { id, label },
+      }
+    })
   }
 
   save = (data) => {
@@ -33,7 +42,7 @@ class FlowPage extends React.Component {
 
   render() {
     return (
-      <GGEditor className={styles.editor}>
+      <>
         <Row type="flex" className={styles.editorHd}>
           <Col span={24}>
             <FlowToolbar onSave={this.save} />
@@ -52,12 +61,22 @@ class FlowPage extends React.Component {
           </Col>
         </Row>
         <FlowContextMenu />
-        <NodeProperty visible={this.state.propertyDailogVisible} />
-        <RegisterCommand name="save" config={{ queue: false, save: this.save }} />
+        <NodeEditor visible={this.props.nodeEditorVisible} />
+        <RegisterCommand name="save" config={{ queue: false }} />
+      </>
+    );
+  }
+}
+
+class Editor extends PureComponent {
+  render() {
+    const Page = withPropsAPI(FlowPage)
+    return (
+      <GGEditor className={styles.editor} >
+        <Page {...this.props}/>
       </GGEditor>
     );
   }
 }
 
-
-export default FlowPage;
+export default connect()(Editor);
