@@ -8,15 +8,25 @@ class FlowItemPanel extends React.Component {
     return (
       <ItemPanel className={styles.itemPanel}>
         <Card bordered={false}>
-          <Item
+        <Item
             type="node"
-            size="72*72"
-            shape="flow-circle"
+            size="48*48"
+            shape="flow-start"
             model={{
-              color: '#FA8C16',
-              label: '起止节点',
+              color: '#31fa16',
+              label: '开始',
             }}
-            src="https://gw.alipayobjects.com/zos/rmsportal/ZnPxbVjKYADMYxkTQXRi.svg"
+            src="/images/start.svg"
+          />
+        <Item
+            type="node"
+            size="48*48"
+            shape="flow-end"
+            model={{
+              color: '#fa1e16',
+              label: '结束',
+            }}
+            src="/images/end.svg"
           />
           <Item
             type="node"
@@ -24,9 +34,9 @@ class FlowItemPanel extends React.Component {
             shape="flow-rect"
             model={{
               color: '#1890FF',
-              label: '常规节点',
+              label: '处理节点',
             }}
-            src="https://gw.alipayobjects.com/zos/rmsportal/wHcJakkCXDrUUlNkNzSy.svg"
+            src="/images/process.svg"
           />
           <Item
             type="node"
@@ -34,9 +44,19 @@ class FlowItemPanel extends React.Component {
             shape="flow-rhombus"
             model={{
               color: '#13C2C2',
-              label: '分叉节点',
+              label: '判断',
             }}
-            src="https://gw.alipayobjects.com/zos/rmsportal/SnWIktArriZRWdGCnGfK.svg"
+            src="/images/decide.svg"
+          />
+          <Item
+            type="node"
+            size="80*48"
+            shape="flow-capsule"
+            model={{
+              color: '#1890FF',
+              label: '会签',
+            }}
+            src="/images/contersign.svg"
           />
           <Item
             type="node"
@@ -44,9 +64,9 @@ class FlowItemPanel extends React.Component {
             shape="flow-capsule"
             model={{
               color: '#722ED1',
-              label: '模型节点',
+              label: '抄送',
             }}
-            src="https://gw.alipayobjects.com/zos/rmsportal/rQMUhHHSqwYsPwjXxcfP.svg"
+            src="/images/cc.svg"
           />
         </Card>
       </ItemPanel>

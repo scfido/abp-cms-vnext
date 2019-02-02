@@ -1,10 +1,11 @@
 import { Divider, Tooltip, Button } from 'antd';
 import { Command, Toolbar, withPropsAPI } from 'gg-editor';
-import React from 'react';
-import iconfont from '../../styles/iconfont.less';
+import React, { PureComponent } from 'react';
+import router from 'umi/router';
+import iconfont from '../../../styles/iconfont.less';
 import styles from './index.less';
 
-class FlowToolbar extends React.Component {
+class FlowToolbar extends PureComponent {
   componentDidMount() {
     this.propsAPI = this.props.propsAPI;
   }
@@ -13,6 +14,17 @@ class FlowToolbar extends React.Component {
     let data = this.propsAPI.save()
     if (this.props.onSave)
       this.props.onSave(data);
+  }
+
+  exit = () => {
+    if (this.props.onExit) {
+      let save = this.props.onExit();
+
+      if (save)
+        this.save();
+    }
+
+    router.push('./')
   }
 
   render() {
@@ -73,6 +85,10 @@ class FlowToolbar extends React.Component {
         <Command name="save">
           <Button onClick={this.save}>保存</Button>
         </Command>
+        <Command name="exit">
+          <Button onClick={this.exit} style={{ marginLeft: 8 }} >退出</Button>
+        </Command>
+
       </Toolbar>
     );
   }

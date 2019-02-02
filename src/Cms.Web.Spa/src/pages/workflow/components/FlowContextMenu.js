@@ -9,7 +9,7 @@ import {
   ContextMenu,
 } from 'gg-editor';
 import styles from './index.less';
-import iconfont from '../../styles/iconfont.less';
+import iconfont from '../../../styles/iconfont.less';
 
 class FlowContextMenu extends React.Component {
   render() {
